@@ -157,40 +157,22 @@ export function DropdownChatButton(props: { name: string, color: string, admin: 
     {reference.value && <Modal>
       <div className="fixed inset-0"
         onClick={reference.unset} />
-      <div className="font-pixel text-center rounded shadow-lg bg-zinc-300 border-2 border-black z-10 min-w-[12rem]"
+      <div className="font-pixel py-2 text-center rounded shadow-lg border-2 border-opposite z-10 min-w-[12rem] bg-zinc-300 dark:bg-zinc-400"
         style={popper.styles.popper}
         {...popper.attributes.popper}
         ref={dropdown.set}>
-        <Anchor className="text-xs py-2 block bg-transparent text-zinc-800 hover:underline"
+        <Anchor className="text-sm py-2 px-4 block text-zinc-800 hover:underline"
           href="/profil">
           Profil
         </Anchor>
-        <div className="h-0 border border-solid border-t-0 border-black" />
-        <a className="text-xs py-2 block bg-transparent text-zinc-800 hover:underline">
+        <div className="h-0 my-2 border border-solid border-t-0 border-opposite" />
+        <a className="text-sm py-2 px-4 block text-zinc-800 hover:underline">
           Play
         </a>
-        <div className="h-0 border border-solid border-t-0 border-black" />
-        <a className="text-xs py-2 block bg-transparent text-zinc-800 hover:underline">
+        <div className="h-0 my-2 border border-solid border-t-0 border-opposite" />
+        <a className="text-sm py-2 px-4 block text-zinc-800 hover:underline">
           Chat
         </a>
-        {props.admin && <>
-          <div className="h-0 border border-solid border-t-0 border-black" />
-          <a className="text-xs py-2 block bg-transparent text-zinc-800 hover:underline">
-            Ban
-          </a>
-          <div className="h-0 border border-solid border-t-0 border-black" />
-          <a className="text-xs py-2 block bg-transparent text-zinc-800 hover:underline">
-            Kick
-          </a>
-          <div className="h-0 border border-solid border-t-0 border-black" />
-          <a className="text-xs py-2 block bg-transparent text-zinc-800 hover:underline">
-            Mute
-          </a>
-          <div className="h-0 border border-solid border-t-0 border-black" />
-          <a className="text-xs py-2 block bg-transparent text-zinc-800 hover:underline">
-            Promote
-          </a>
-        </>}
       </div>
     </Modal>}
   </>
