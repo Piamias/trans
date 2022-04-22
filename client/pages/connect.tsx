@@ -24,7 +24,7 @@ export default function Page() {
         </div>
       </div>
       <div className="col-span-8 bg-zinc-200 h-screen">
-        <p className="mt-16 text-center font-pixel text-8xl underline">
+        <p className="mt-16 text-center font-pixel text-black text-8xl underline">
           pong.io
         </p>
         <div className="mt-48 flex justify-center">
