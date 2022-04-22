@@ -35,13 +35,9 @@ function Chat() {
   }, [channelChoosen])
 
   useEffect(() => {
-
-  }, [])
-
-  useEffect(() => {
     if (!socket) return
 
-    const cmds = ["joined", "kicked", "banned", "unbanned", "muted", "unmuted", "admin", "rmadmin", "password", "rmpassword", "noPwdButTry", "wrongPwd", "mutedButTry", "banButTry", "leave"]
+    const cmds = ["help", "joined", "kicked", "banned", "unbanned", "muted", "unmuted", "admin", "rmadmin", "password", "rmpassword", "noPwdButTry", "wrongPwd", "mutedButTry", "banButTry", "leave"]
     const f = (e: MessageEvent) => {
       const packet = JSON.parse(e.data);
       console.log(packet)
@@ -50,12 +46,20 @@ function Chat() {
         if (nickname != "")
           setNickname(packet.data.nickname)
       }
+      if (packet.event == "msg") {
+        const sender = packet.data.sender;
+
+      }
       if (!cmds.includes(packet.event)) return
       onmessage({ ...packet.data, nickname: "system" }); //toutes les cmds
     }
     socket.addEventListener("message", f)
     return () => socket.removeEventListener("message", f)
   }, [socket, onmessage])
+
+  useEffect(() => {
+    return listen("pmsg", onmessage)
+  }, [listen, onmessage])
 
   const sendMessage = useCallback((message) => {
     const channel = channelChoosen;
@@ -82,10 +86,9 @@ function Chat() {
     else if (message.startsWith("/rmadmin ")) //
       send("rmadmin", { channel, message })
     else if (message.startsWith("/help")) //
-    {
-      console.log("channel = " + channel);
       send("help", { channel, message })
-    }
+    else if (message.startsWith("/msg ")) //
+      send("msg", { channel, message })
     else
       send("message", { channel, message })
   }, [channelChoosen, send])
@@ -158,9 +161,19 @@ function Chat() {
           </div>
           {messages.map((msg, i) =>
             <Fragment key={i}>
-              {(msg.nickname === "system") ? <SystemMessage msg={msg.message} />
-                : (msg.nickname === nickname) ? <MyMessage msg={msg.message} name={msg.nickname} />
-                  : <OtherMessage msg={msg.message} name={msg.nickname} color={'text-red-600'} />}
+              {(() => {
+                if (msg.nickname === "system")
+                  return <SystemMessage
+                    msg={msg.message} />
+                if (msg.nickname === nickname)
+                  return <MyMessage
+                    msg={msg.message}
+                    name={msg.nickname} />
+                return <OtherMessage
+                  msg={msg.message}
+                  name={msg.nickname}
+                  color={'text-red-600'} />
+              })()}
             </Fragment>)}
           <div className="h-[25px]" />
         </div>

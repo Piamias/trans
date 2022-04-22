@@ -510,17 +510,45 @@ export class ChatController {
     channel: string,
   }) {
     const client = this.clients.get(socket)
-    console.log("1");
     if (!data.channel)
       throw new Error("Empty channel string")
-    console.log("2");
     const channel = this.getChannelByName(data.channel)
     if (!channel)
       throw new Error("Channel do not exists")
-    console.log("3");
-    const packet = msg("help", {
+    client.socket.send(msg("help", {
       channel: channel.name,
-    })
-    client.socket.send(packet)
+      message: "👨‍🎓\n/leave \n/kick [NAME]\n/ban [NAME]\n/unban [NAME]\n/mute [NAME]\n/unmute [NAME]\n/admin [NAME]\n/rmadmin [NAME]\n/msg [NAME] [MESSAGE]",
+    }))
+  }
+
+  @SubscribeMessage("msg")
+  onmsg(socket: WebSocket, data: {
+    channel: string,
+    message: string
+  }) {
+    const client = this.clients.get(socket)
+    if (!data.channel)
+      throw new Error("Empty channel string")
+    const channel = this.getChannelByName(data.channel)
+    if (!channel)
+      throw new Error("Channel do not exists")
+    const messageSplit = data.message.split(" ");
+    if (messageSplit.length != 3) {
+      client.socket.send(msg("msg", {
+        channel: channel.name,
+        nickname: "system",
+        message: "❗ Please enter '/msg NAME MESSAGE' to send a private message"
+      }))
+      throw new Error("Wrong format for private msg")
+    }
+    const target = this.names.get(messageSplit[1]);
+    if (!channel.clients.has(target))
+      throw new Error(client.name + " is trying to send a private message to " + messageSplit[1] + " which is not member of the channel")
+    const content = messageSplit[2]
+    target.socket.send(msg("pmsg", {
+      channel: channel.name,
+      sender: client.name,
+      message: content
+    }))
   }
 }
