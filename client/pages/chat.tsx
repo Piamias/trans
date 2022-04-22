@@ -81,6 +81,11 @@ function Chat() {
       send("admin", { channel, message })
     else if (message.startsWith("/rmadmin ")) //
       send("rmadmin", { channel, message })
+    else if (message.startsWith("/help")) //
+    {
+      console.log("channel = " + channel);
+      send("help", { channel, message })
+    }
     else
       send("message", { channel, message })
   }, [channelChoosen, send])
@@ -122,7 +127,6 @@ function Chat() {
   }, [])
 
   useEffect(() => {
-    console.log('test')
     scrollToBottom()
   }, [messages]);
 

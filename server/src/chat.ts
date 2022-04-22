@@ -504,4 +504,23 @@ export class ChatController {
     this.sendToAll(channel, packet);
     channel.admins.delete(target);
   }
+
+  @SubscribeMessage("help")
+  onhelp(socket: WebSocket, data: {
+    channel: string,
+  }) {
+    const client = this.clients.get(socket)
+    console.log("1");
+    if (!data.channel)
+      throw new Error("Empty channel string")
+    console.log("2");
+    const channel = this.getChannelByName(data.channel)
+    if (!channel)
+      throw new Error("Channel do not exists")
+    console.log("3");
+    const packet = msg("help", {
+      channel: channel.name,
+    })
+    client.socket.send(packet)
+  }
 }

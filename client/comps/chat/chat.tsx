@@ -72,7 +72,7 @@ export function MyMessage(props: { name: string, msg: string }) {
   return (
     <>
       <div className="h-[25px]" />
-      <div className="flex justify-start pl-4">
+      <div className="flex justify-end pr-4">
         <div className=" bg-zinc-100 rounded shadow-xl py-2 px-3 max-w-md">
           <p className="font-pixel text-blue-500">{props.name} :</p>
           <p className="text-zinc-800">{props.msg}</p>
@@ -86,7 +86,7 @@ export function OtherMessage(props: { name: string, msg: string, color: string }
   return (
     <>
       <div className="h-[25px]" />
-      <div className="flex justify-end pr-4">
+      <div className="flex justify-start pl-4 ">
         <div className=" bg-zinc-100 rounded shadow-xl py-2 px-3 max-w-md">
           <DropdownChatButton name={props.name} color={props.color} admin={true} />
           <p className="text-zinc-800">{props.msg}</p>
@@ -101,7 +101,7 @@ export function SystemMessage(props: { msg: string }) {
     <>
       <div className="h-[25px]" />
       <div className="flex justify-center">
-        <div className=" bg-yellow-300 rounded shadow-xl py-2 px-3 max-w-md">
+        <div className=" bg-blue-400 rounded shadow-xl py-2 px-3 max-w-md">
           <p className={`font-pixel text-zinc-800`}>System :</p>
           <p className="font-mono text-sm text-zinc-800">{props.msg}</p>
         </div>
