@@ -63,8 +63,10 @@ function Chat() {
 
 	const sendMessage = useCallback((message) => {
 		const channel = channelChoosen;
-		if (message == "/leave")
+		if (message == "/leave") {
 			send("leave", { channel })
+			setChannelChoosen("")
+		}
 		else if (message == "/rmpassword")
 			send("rmpassword", { channel })
 		else if (message.startsWith("/password ")) //
