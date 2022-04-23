@@ -202,7 +202,7 @@ export default function Page() {
 
 			if (ball.inter(rbar)) {
 				ball.bounce(rbar)
-				if (ball.dx < 1 && ball.dx > -1)
+				if (ball.dx < 1.5 && ball.dx > -1.5)
 					ball.dx *= 1.1
 			}
 
