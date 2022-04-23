@@ -553,12 +553,14 @@ export class ChatController {
 		client.socket.send(msg("pmsg", {
 			channel: channel.name,
 			private: true,
+			sender: true,
 			nickname: target.name,
 			message: content
 		}))
 		target.socket.send(msg("pmsg", {
 			channel: channel.name,
 			private: true,
+			sender: false,
 			nickname: client.name,
 			message: content
 		}))

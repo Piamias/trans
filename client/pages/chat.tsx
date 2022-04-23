@@ -6,7 +6,8 @@ import { ChatList, CreateChannel, InputMessage, MyMessage, MyPrivateMessage, Oth
 
 interface Message {
 	channel: string,
-	private: boolean,
+	private?: boolean,
+	sender?: boolean,
 	nickname: string,
 	message: string
 }
@@ -160,13 +161,16 @@ function Chat() {
 						<Fragment key={i}>
 							{(() => {
 								if (msg.private === true) {
-									if (msg.nickname === nickname)
+									{ console.log(msg.nickname) }
+									{ console.log(nickname) }
+									if (msg.sender === true)
 										return <MyPrivateMessage
 											msg={msg.message}
 											name={msg.nickname} />
-									return <OtherPrivateMessage
-										msg={msg.message}
-										name={msg.nickname} />
+									else if (msg.sender === false)
+										return <OtherPrivateMessage
+											msg={msg.message}
+											name={msg.nickname} />
 								}
 								if (msg.nickname === "system")
 									return <SystemMessage

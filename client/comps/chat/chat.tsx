@@ -3,6 +3,7 @@ import { DropdownChatButton } from "comps/profil/profil";
 import { ChangeEvent, KeyboardEvent, useCallback, useState } from "react";
 import { AiFillLock } from 'react-icons/ai';
 import { IoSend } from 'react-icons/io5';
+import { MdOutlineHelp } from 'react-icons/md';
 
 export function ChatList(props: { channelChoosen: string, channel: string, setChannelChoosen(chan: string): void, createChannel(chan: string): void }) {
 	const { channelChoosen, channel, setChannelChoosen, createChannel } = props;
@@ -166,7 +167,9 @@ export function InputMessage(props: { sendMessage(message: string): void }) {
 	return (
 		<>
 			<div className="bg-contrast px-4 py-4 border-t-2 border-opposite flex justify-center">
-				<div>TEST</div>
+				<a className="rounded-full px-1 py-1">
+					<MdOutlineHelp className="text-4xl" />
+				</a>
 				<div className="flex-1 mx-4">
 					<input className="relative text-zinc-800 w-full border-2 border-opposite rounded px-2 py-2" type={"text"} placeholder="Your Message"
 						value={message}
