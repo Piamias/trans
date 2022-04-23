@@ -1,7 +1,7 @@
 import { Layout } from "comps/layout/layout"
 import { useTheme } from "comps/theme/context"
 import { useStatic } from "libs/react/object"
-import { MouseEvent, TouchEvent, useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react"
+import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react"
 
 const w = 1920
 const h = 1080
@@ -216,30 +216,6 @@ export default function Page() {
 		frame.current = requestAnimationFrame(loop)
 		return () => cancelAnimationFrame(frame.current)
 	}, [canvas, context, theme, loop])
-
-	const enableup = useCallback((e: MouseEvent | TouchEvent) => {
-		e.preventDefault()
-		e.stopPropagation()
-		keys.up = true
-	}, [])
-
-	const enabledown = useCallback((e: MouseEvent | TouchEvent) => {
-		e.preventDefault()
-		e.stopPropagation()
-		keys.down = true
-	}, [])
-
-	const disableup = useCallback((e: MouseEvent | TouchEvent) => {
-		e.preventDefault()
-		e.stopPropagation()
-		keys.up = false
-	}, [])
-
-	const disabledown = useCallback((e: MouseEvent | TouchEvent) => {
-		e.preventDefault()
-		e.stopPropagation()
-		keys.down = false
-	}, [])
 
 	useEffect(() => {
 		function onkeydown(e: KeyboardEvent) {
