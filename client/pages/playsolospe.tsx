@@ -137,11 +137,11 @@ export default function Page() {
 			lbar.dy = 1 * s
 
 		if (rbar.y + 50 > ball.y) {
-			rbar.dy = -9
+			rbar.dy = -8
 		}
 
 		if (rbar.y + 50 < ball.y) {
-			rbar.dy = 9
+			rbar.dy = 8
 		}
 		if (lbar.dy > 0) {
 			lbar.dy = Math.max(lbar.dy + (-0.025 * dtime), 0)

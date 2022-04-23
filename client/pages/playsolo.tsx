@@ -138,20 +138,13 @@ export default function Page() {
 			lbar.dy = 1 * s
 
 		if (rbar.y + 50 > ball.y) {
-			rbar.dy = -9
+			rbar.dy = -8
 		}
 
 		if (rbar.y + 50 < ball.y) {
-			rbar.dy = 9
+			rbar.dy = 8
 		}
 
-		// if (rbar.y >= 810) {
-		// 	rbar.dy = -7
-		// }
-
-		// if (rbar.y <= 0) {
-		// 	rbar.dy = 7
-		// }
 
 		if (lbar.dy > 0) {
 			lbar.dy = Math.max(lbar.dy + (-0.025 * dtime), 0)
@@ -164,18 +157,6 @@ export default function Page() {
 		}
 
 		rbar.y = Math.min(rbar.y + rbar.dy + rbar.h, h) - rbar.h
-		// MODE SOLO
-
-
-		// MODE SPECIAL
-		// if (mbar.y === 810)
-		//   mbar.dy = -0.5
-		// if (mbar.y <= 0)
-		//   mbar.dy = 0.5
-		// mbar.y = Math.min(mbar.y + (mbar.dy * dtime) + mbar.h, h) - mbar.h
-
-		// MODE SPECIAL
-
 
 		if (!ball.shadow) {
 			if (ball.inter(left)) {
@@ -211,13 +192,6 @@ export default function Page() {
 				ball.dx *= 1.1
 			}
 
-			// MODE SPECIAL
-			// if (ball.inter(mbar)) {
-			//   ball.bounce(mbar)
-			//   ball.dx *= 1.1
-			// }
-			// MODE SPECIAL
-
 			for (const aabb of all)
 				if (ball.inter(aabb))
 					ball.bounce(aabb)
@@ -228,7 +202,6 @@ export default function Page() {
 		ball.draw(context)
 		lbar.draw(context)
 		rbar.draw(context)
-		// mbar.draw(context) MODE SPECIAL
 
 		frame.current = requestAnimationFrame(loop)
 	}, [canvas, context])
@@ -320,7 +293,7 @@ export default function Page() {
 				</td>
 				<td>
 					<div className="px-2 py-2 pl-20">
-						<img src="https://pbs.twimg.com/profile_images/1385891929917992960/J7hK0tks_400x400.jpg" className="w-16 h-16 rounded-full" alt="" />
+						<img src="https://cdn.pixabay.com/photo/2017/10/24/00/39/bot-icon-2883144_1280.png" className="w-16 h-16 rounded-full" alt="" />
 					</div>
 				</td>
 			</div>
