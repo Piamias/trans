@@ -141,10 +141,10 @@ export default function Page() {
 			rbar.y = 0
 
 		if (rbar.y + 150 > ball.y)
-			rbar.dy = -9
+			rbar.dy = -8
 
 		if (rbar.y + 150 < ball.y)
-			rbar.dy = 9
+			rbar.dy = 8
 
 
 		if (lbar.dy > 0) {

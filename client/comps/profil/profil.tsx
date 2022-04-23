@@ -25,7 +25,7 @@ export function Match(props: { res: boolean }) {
 				<div className="font-pixel pt-2 text-zinc-100">5 / 4</div>
 			</td>
 			<td className={`px-6 py-3 border-b border-black ${bg}`}>
-				<div className="font-pixel pt-2 text-zinc-100">Special / Solo</div>
+				<div className="font-pixel pt-2 pl-4 text-zinc-100">Special</div>
 			</td>
 			<td className={`px-6 py-3 border-b border-black ${bg}`}>
 				<div className="flex item-center">
