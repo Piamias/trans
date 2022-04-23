@@ -21,6 +21,8 @@ function Chat() {
 
 	const [nickname, setNickname] = useState("")
 
+	const d = new Date()
+
 	const allMessages = useStatic(
 		() => new Map<string, Message[]>())
 	const [messages, setMessages] =
@@ -154,7 +156,7 @@ function Chat() {
 				<div className="overflow-y-auto grow" ref={messagesEndRef}>
 					<div className="flex justify-center pt-4">
 						<div className="rounded text-center font-pixel bg-contrast pt-4 w-64 h-12 text-zinc-800 shadow-xl">
-							25 / 06 / 2022
+							{d.getDate()}/{d.getMonth()}/{d.getFullYear()}
 						</div>
 					</div>
 					{messages.map((msg, i) =>
