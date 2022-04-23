@@ -2,7 +2,7 @@ import { Layout } from "comps/layout/layout";
 import { useStatic } from "libs/react/object";
 import { useSocket } from "libs/socket/connect";
 import { Fragment, useCallback, useEffect, useRef, useState } from "react";
-import { ChatList, CreateChannel, InputMessage, MyMessage, MyPrivateMessage, OtherMessage, OtherPrivateMessage, SystemMessage } from "../comps/chat/chat";
+import { ChatList, CreateChannel, InputMessage, InviteMessage, MyMessage, MyPrivateMessage, OtherMessage, OtherPrivateMessage, SystemMessage } from "../comps/chat/chat";
 
 interface Message {
 	channel: string,
@@ -189,6 +189,7 @@ function Chat() {
 									color={'text-red-600'} />
 							})()}
 						</Fragment>)}
+					<InviteMessage name="test" channel="chattest" />
 					<div className="h-[25px]" />
 				</div>
 				<InputMessage sendMessage={sendMessage} help={channelChoosen !== ""} />

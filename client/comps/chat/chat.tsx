@@ -2,6 +2,7 @@ import { Modal } from "comps/modal/modal";
 import { DropdownChatButton } from "comps/profil/profil";
 import { ChangeEvent, KeyboardEvent, useCallback, useState } from "react";
 import { AiFillLock } from 'react-icons/ai';
+import { BsCheckLg } from "react-icons/bs";
 import { IoSend } from 'react-icons/io5';
 import { MdOutlineHelp } from 'react-icons/md';
 
@@ -76,7 +77,7 @@ export function MyMessage(props: { name: string, msg: string }) {
 			<div className="flex justify-end pr-4">
 				<div className=" bg-zinc-100 rounded shadow-xl py-2 px-3 max-w-md">
 					<p className="font-pixel text-blue-500">{props.name} :</p>
-					<p className="text-zinc-800 whitespace-pre-line">{props.msg}</p>
+					<p className="text-zinc-800 pt-2 whitespace-pre-line">{props.msg}</p>
 				</div>
 			</div>
 		</>
@@ -90,7 +91,7 @@ export function OtherMessage(props: { name: string, msg: string, color: string }
 			<div className="flex justify-start pl-4 ">
 				<div className=" bg-zinc-100 rounded shadow-xl py-2 px-3 max-w-md">
 					<DropdownChatButton name={props.name} color={props.color} admin={true} />
-					<p className="text-zinc-800 whitespace-pre-line">{props.msg}</p>
+					<p className="text-zinc-800 pt-2 whitespace-pre-line">{props.msg}</p>
 				</div>
 			</div>
 		</>
@@ -106,7 +107,7 @@ export function OtherPrivateMessage(props: { name: string, msg: string }) {
 			<div className="flex justify-start pl-4 ">
 				<div className=" bg-zinc-100 rounded shadow-xl py-2 px-3 max-w-md border-4 border-dotted border-black">
 					<DropdownChatButton name={head} color={"text-red-600"} admin={true} />
-					<p className="text-zinc-800 whitespace-pre-line">{props.msg}</p>
+					<p className="text-zinc-800 pt-2 whitespace-pre-line">{props.msg}</p>
 				</div>
 			</div>
 		</>
@@ -122,11 +123,32 @@ export function MyPrivateMessage(props: { name: string, msg: string }) {
 			<div className="flex justify-end pr-4 ">
 				<div className=" bg-zinc-100 rounded shadow-xl py-2 px-3 max-w-md border-4 border-dotted border-black">
 					<DropdownChatButton name={head} color={"text-blue-600"} admin={true} />
-					<p className="text-zinc-800 whitespace-pre-line">{props.msg}</p>
+					<p className="text-zinc-800 pt-2 whitespace-pre-line">{props.msg}</p>
 				</div>
 			</div>
 		</>
 	</>
+}
+
+export function InviteMessage(props: { name: string, channel: string }) {
+	return (
+		<>
+			<div className="h-[25px]" />
+			<div className="flex justify-center">
+				<div className=" bg-yellow-400 border-4 border-dashed rounded shadow-xl py-2 px-3 max-w-md">
+					<p className={`font-pixel text-zinc-800`}>System :</p>
+					<p className="font-mono text-sm pt-2 text-zinc-800 whitespace-pre-line">
+						{props.name} invite you in {props.channel}
+					</p>
+					<div className="pt-2 flex justify-center">
+						<button>
+							<BsCheckLg className="text-xl hover:text-green-600" />
+						</button>
+					</div>
+				</div>
+			</div>
+		</>
+	)
 }
 
 export function SystemMessage(props: { msg: string }) {
@@ -136,7 +158,7 @@ export function SystemMessage(props: { msg: string }) {
 			<div className="flex justify-center">
 				<div className=" bg-blue-400 rounded shadow-xl py-2 px-3 max-w-md">
 					<p className={`font-pixel text-zinc-800`}>System :</p>
-					<p className="font-mono text-sm text-zinc-800 whitespace-pre-line">
+					<p className="font-mono text-sm pt-2 text-zinc-800 whitespace-pre-line">
 						{props.msg}
 					</p>
 				</div>
