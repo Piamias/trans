@@ -73,19 +73,23 @@ export function MatchHistory() {
 export function YourProfile() {
 	const [name, setName] = useState('Username')
 
-	const [image, setImage] = useState()
+	const [image, setImage] = useState('https://pbs.twimg.com/profile_images/1385891929917992960/J7hK0tks_400x400.jpg')
 
 	const ChangeName = (name: string) => {
 		setName(name)
+	}
+
+	const ChangeImage = (image: any) => {
+		setImage(image)
 	}
 
 	return <>
 		<div className='h-[100px]' />
 		<div className='flex justify-center'>
 			<button className="relative transition-opacity hover:opacity-75 duration-300">
-				<input className="absolute inset-0 opacity-0" type="file" />
-				{/* TODO: Changement d'image */}
-				<img src='https://pbs.twimg.com/profile_images/1385891929917992960/J7hK0tks_400x400.jpg' className="w-48 h-48 rounded-full" alt="" />
+				<input onChange={ChangeImage}
+					className="absolute inset-0 opacity-0" type="file" />
+				<img src={image} className="w-48 h-48 rounded-full" alt="" />
 			</button>
 		</div>
 		<div className='flex justify-center pt-4 font-pixel font-semibold text-xl tracking-wider'>{name}</div>
