@@ -183,13 +183,15 @@ export default function Page() {
 
 			if (ball.inter(lbar)) {
 				ball.bounce(lbar)
-				ball.dx *= 1.1
+				if (ball.dx < 1 && ball.dx > 1)
+					ball.dx *= 1.1
 				ball.dy += lbar.dy
 			}
 
 			if (ball.inter(rbar)) {
 				ball.bounce(rbar)
-				ball.dx *= 1.1
+				if (ball.dx < 1 && ball.dx > -1)
+					ball.dx *= 1.1
 			}
 
 			for (const aabb of all)
