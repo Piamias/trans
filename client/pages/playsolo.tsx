@@ -137,13 +137,14 @@ export default function Page() {
 		if (keys.down)
 			lbar.dy = 1 * s
 
-		if (rbar.y + 50 > ball.y) {
-			rbar.dy = -8
-		}
+		if (rbar.y < 0)
+			rbar.y = 0
 
-		if (rbar.y + 50 < ball.y) {
-			rbar.dy = 8
-		}
+		if (rbar.y + 150 > ball.y)
+			rbar.dy = -9
+
+		if (rbar.y + 150 < ball.y)
+			rbar.dy = 9
 
 
 		if (lbar.dy > 0) {
@@ -158,6 +159,7 @@ export default function Page() {
 
 		rbar.y = Math.min(rbar.y + rbar.dy + rbar.h, h) - rbar.h
 
+		console.log(rbar.y)
 		if (!ball.shadow) {
 			if (ball.inter(left)) {
 				setScore2(x => x + 1)

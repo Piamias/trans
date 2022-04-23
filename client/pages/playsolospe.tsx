@@ -136,13 +136,15 @@ export default function Page() {
 		if (keys.down)
 			lbar.dy = 1 * s
 
-		if (rbar.y + 50 > ball.y) {
-			rbar.dy = -8
-		}
+		if (rbar.y < 0)
+			rbar.y = 0
 
-		if (rbar.y + 50 < ball.y) {
+		if (rbar.y + 150 > ball.y)
+			rbar.dy = -8
+
+		if (rbar.y + 150 < ball.y)
 			rbar.dy = 8
-		}
+
 		if (lbar.dy > 0) {
 			lbar.dy = Math.max(lbar.dy + (-0.025 * dtime), 0)
 			lbar.y = Math.min(lbar.y + (lbar.dy * dtime) + lbar.h, h) - lbar.h
