@@ -189,7 +189,7 @@ function Chat() {
 						</Fragment>)}
 					<div className="h-[25px]" />
 				</div>
-				<InputMessage sendMessage={sendMessage} />
+				<InputMessage sendMessage={sendMessage} help={channelChoosen !== ""} />
 			</div>
 		</>
 	)

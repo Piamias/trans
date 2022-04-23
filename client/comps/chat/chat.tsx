@@ -145,10 +145,12 @@ export function SystemMessage(props: { msg: string }) {
 	)
 }
 
-export function InputMessage(props: { sendMessage(message: string): void }) {
+export function InputMessage(props: { sendMessage(message: string): void, help: boolean }) {
 	const { sendMessage } = props;
 
 	const [message, setMessage] = useState<string>();
+
+	console.log(props.help)
 
 	const updateMessage = useCallback((e: ChangeEvent<HTMLInputElement>) => {
 		setMessage(e.currentTarget.value)
@@ -185,7 +187,7 @@ export function InputMessage(props: { sendMessage(message: string): void }) {
 					</input>
 				</div>
 				<button onClick={send}>
-					<IoSend className="text-3xl text-zinc-800" />
+					{props.help && <IoSend className="text-3xl text-zinc-800" />}
 				</button>
 			</div>
 		</>
