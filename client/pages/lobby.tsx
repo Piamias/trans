@@ -8,9 +8,9 @@ function Solo() {
 				<thead>
 					<tr>
 						<th
-							className="px-6 py-3 text-sm pt-4 font-pixel leading-4 tracking-wider text-center text-black uppercase border-b border-black bg-contrast"
+							className="px-14 py-8 text-xl pt-10 font-pixel leading-4 tracking-wider text-center text-black uppercase border-b border-black bg-contrast underline"
 						>
-							PLAY SOLO
+							TRAINING
 						</th>
 					</tr>
 				</thead>
@@ -42,9 +42,9 @@ function Multi() {
 				<thead>
 					<tr>
 						<th
-							className="px-6 py-3 text-sm pt-4 font-pixel leading-4 tracking-wider text-center text-black uppercase border-b border-black bg-contrast"
+							className="px-14 py-8 text-xl pt-10 font-pixel leading-4 tracking-wider text-center text-black uppercase border-b border-black bg-contrast underline"
 						>
-							PLAY MULTI
+							RANKED
 						</th>
 					</tr>
 				</thead>
@@ -63,6 +63,7 @@ function Multi() {
 							<div className="text-zinc-100 font-pixel font-semibold text-xl tracking-wider">Special</div>
 						</Anchor>
 					</div>
+					<div className="h-[35px]"></div>
 				</tbody>
 			</table>
 		</>
