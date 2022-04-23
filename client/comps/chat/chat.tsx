@@ -160,6 +160,11 @@ export function InputMessage(props: { sendMessage(message: string): void }) {
 		setMessage("")
 	}, [message, sendMessage])
 
+	const help = useCallback(() => {
+		sendMessage("/help")
+		setMessage("")
+	}, [message, sendMessage])
+
 	const onEnter = useCallback((e: KeyboardEvent<HTMLInputElement>) => {
 		if (e.key === "Enter") send()
 	}, [send, message])
@@ -167,9 +172,11 @@ export function InputMessage(props: { sendMessage(message: string): void }) {
 	return (
 		<>
 			<div className="bg-contrast px-4 py-4 border-t-2 border-opposite flex justify-center">
-				<a className="rounded-full px-1 py-1">
+				<button
+					className="rounded-full px-1 py-1"
+					onClick={help}>
 					<MdOutlineHelp className="text-4xl" />
-				</a>
+				</button>
 				<div className="flex-1 mx-4">
 					<input className="relative text-zinc-800 w-full border-2 border-opposite rounded px-2 py-2" type={"text"} placeholder="Your Message"
 						value={message}
