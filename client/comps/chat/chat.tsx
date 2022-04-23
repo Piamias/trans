@@ -174,11 +174,12 @@ export function InputMessage(props: { sendMessage(message: string): void, help: 
 	return (
 		<>
 			<div className="bg-contrast px-4 py-4 border-t-2 border-opposite flex justify-center">
-				<button
-					className="rounded-full px-1 py-1"
-					onClick={help}>
-					<MdOutlineHelp className="text-4xl" />
-				</button>
+				{props.help === true &&
+					<button
+						className="rounded-full px-1 py-1"
+						onClick={help}>
+						<MdOutlineHelp className="text-4xl" />
+					</button>}
 				<div className="flex-1 mx-4">
 					<input className="relative text-zinc-800 w-full border-2 border-opposite rounded px-2 py-2" type={"text"} placeholder="Your Message"
 						value={message}
@@ -187,7 +188,7 @@ export function InputMessage(props: { sendMessage(message: string): void, help: 
 					</input>
 				</div>
 				<button onClick={send}>
-					{props.help && <IoSend className="text-3xl text-zinc-800" />}
+					<IoSend className="text-3xl text-zinc-800" />
 				</button>
 			</div>
 		</>
